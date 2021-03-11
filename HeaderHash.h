@@ -20,6 +20,7 @@ private:
 
 	int getControlSum(string str)
 	{
+		// New control sum
 		unsigned int sault = 0, strlen = 0;
 		if (str.size() % 2 != 0)
 			str += 's';
@@ -32,7 +33,7 @@ private:
 			sault += mult;
 			sault += div;
 		}
-
+		// Old control sum
 		/*for (; strlen < str.size(); strlen++)
 			sault += int(str[strlen]);*/
 		return sault;
@@ -44,28 +45,28 @@ public:
 		if (hashlenght > 3)
 		{
 			this->hash.clear();
-			unsigned int minLen = 2; // Минимальная длина строки, кратная двум, для хэширования
-			unsigned int realminLen = 0; // Длина строки, ближайшая к нужной длине хэша
-			// Получение соли оригинальной строки
+			unsigned int minLen = 2; // Minimum string length, multiple of two, for hashing
+			unsigned int realminLen = 0; // The length of the string closest to the desired hash length
+			// Getting the salt of the original string
 			unsigned int originalSault = this->getControlSum(userString);
 			unsigned int originalLenghtStr = (userString.size());
-			// Получение длины строки, кратной степени двух, ближайшей к заданной длине хеша
+			// Getting the string length, a multiple of a power of two, closest to the specified hash length
 			while (minLen <= hashlenght)
 				realminLen = (minLen *= 2);
-			// Делаем длину строки хеша как минимум в 2 раза длиннее оригинальной строки
+			// Making the hash string length at least 2 times longer than the original string
 			while (minLen < originalLenghtStr)
 				minLen *= 2;
 
 			if ((minLen - originalLenghtStr) < minLen)
 				minLen *= 2;
 			int addCount = minLen - originalLenghtStr;
-			// Добавление
+			// Adding
 			for (int i = 0; i < addCount; i++)
 				userString += this->receivingExistCodes(userString[i] + userString[i + 1]);
-			// Получаем максимальную соль
+			// Get the maximum salt
 			int maxSault = this->getControlSum(userString);
 			int maxLenghtStr = (userString.size());
-			// Определение степени сжатия
+			// Determining the compression ratio
 			while (userString.size() != realminLen)
 			{
 				for (int i = 0, center = userString.size() / 2; i < center; i++)
@@ -80,10 +81,10 @@ public:
 				if (i % countCompress == 0) { this->hash += this->receivingExistCodes(userString[i] + userString[++i]); }
 				else { this->hash += userString[i]; }
 			}
-			// Добавление оригинальных солей
+			// Adding original salts
 			this->hash += this->receivingExistCodes(originalSault);
 			this->hash += this->receivingExistCodes(originalLenghtStr);
-			// Добавление максимальных солей
+			// Р”РѕР±Р°РІР»РµРЅРёРµ РјР°РєСЃРёРјР°Р»СЊРЅС‹С… СЃРѕР»РµР№
 			this->hash += this->receivingExistCodes(maxSault);
 			this->hash += this->receivingExistCodes(maxLenghtStr);
 			return this->hash;
