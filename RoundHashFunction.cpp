@@ -37,7 +37,3 @@ int main()
 //Enter input text, hash lenght and quantity of rounds: string10 10 0
 //TMNXhTdLfd
 //Not big different though :|
-
-//Enter input text, salt, hash lenght and quantity of rounds: string10 salty 10 0 - afVUvneScd
-//Enter input text, salt, hash lenght and quantity of rounds: string10 10 0 - TMNXhTLLwd
-//TMNXhTLLwdsalty - afVUvneScd
