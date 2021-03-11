@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include "HeaderHash.h"
 using namespace std;
 
@@ -20,15 +20,23 @@ int main()
 		for (int i = 0; i < quan; i++)
 		{
 			finalhash += hash.gethash(str, len);
-			//cout << finalhash << endl;
+			//cout << finalhash << endl;	//To debug
 			finalhash = hash.gethash(finalhash, len);
-			//cout << finalhash << endl;
+			//cout << finalhash << endl;	//To debug
 		}
 		cout << finalhash << endl;
 	}
 
 	return 0;
 }
+
+//Old control sum
+//Enter input text, hash lenght and quantity of rounds: string10 10 0
+//TMNXhTLLwd
+//New control sum
+//Enter input text, hash lenght and quantity of rounds: string10 10 0
+//TMNXhTdLfd
+//Not big different though :|
 
 //Enter input text, salt, hash lenght and quantity of rounds: string10 salty 10 0 - afVUvneScd
 //Enter input text, salt, hash lenght and quantity of rounds: string10 10 0 - TMNXhTLLwd
