@@ -84,7 +84,7 @@ public:
 			// Adding original salts
 			this->hash += this->receivingExistCodes(originalSault);
 			this->hash += this->receivingExistCodes(originalLenghtStr);
-			// Добавление максимальных солей
+			// Adding max salts
 			this->hash += this->receivingExistCodes(maxSault);
 			this->hash += this->receivingExistCodes(maxLenghtStr);
 			return this->hash;
