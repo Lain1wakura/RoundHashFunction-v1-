@@ -1,2 +1,2 @@
 # RoundHashFunction-v1-
- Second version of hash function with new additionals
+Hash function with salt and quantity of rounds to hash the text
